@@ -30,6 +30,7 @@ public class Main {
         /* init */
         Nalevna nalevna = null;
         List<Kyblik> kybliky = new ArrayList<Kyblik>();
+        int delkaCesty = 0;
 
         /* projdeme vsechny instance */
         for (int i = 0; i < LINES_NO; i++) {
@@ -39,7 +40,8 @@ public class Main {
             nalevna = new Nalevna(kybliky);
             /* spustime algoritmus */
             BfsAlgorithm bfs = new BfsAlgorithm(nalevna);
-            bfs.computeBuckets();
+            delkaCesty = bfs.computeBuckets();
+            System.out.println("Delka cesty pro instanci " + instanceProblemu[i][0] + " byla " + delkaCesty);
         }
 
     }

@@ -1,20 +1,28 @@
 package kyble;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
- * Implementace mista, kde lze prelit dva kybliky
+ * Implementace mista, kde se manipuluje s kybliky - lze prelit dva kybliky, vratit stav kybliku
  * @author Bc. Vojtěch Svoboda <svobovo3@fit.cvut.cz>
  */
 public class Nalevna {
 
+    /* seznam kybliku k dispozici */
     private List<Kyblik> kybliky;
+    private int pocet;
+
+    /* stavy co jsme jiz prosli */
+    List<StavyKybliku> closed = new ArrayList<StavyKybliku>();
 
     /**
      * Konstruktor
      */
     public Nalevna(List<Kyblik> kybliky) {
         this.kybliky = kybliky;
+        this.pocet = kybliky.size();
     }
 
     /**
@@ -43,6 +51,68 @@ public class Nalevna {
         zdrojovy.setAktualneVody(novyStavCilovy);
         cilovy.setAktualneVody(novyStavZdrojovy);
 
+    }
+
+    /**
+     * Vrati nam cilovy stav vsech kybliku
+     * @return StavKybliku
+     */
+    public StavyKybliku getCiloveStavy() {
+        /* init */
+        Kyblik kyblik = null;
+        int[] stavy = new int[this.pocet];
+        int i = 0;
+        /* musime zjistit stav z kybliku */
+        Iterator it = kybliky.iterator();
+        while ( it.hasNext() ) {
+            kyblik = (Kyblik) it.next();
+            stavy[i] = kyblik.getCilovyStav();
+            i++;
+        }
+        return new StavyKybliku(stavy);
+    }
+
+    /**
+     * Vrati nam startovni, nebo aktualni stavy kybliku
+     * @return
+     */
+    public StavyKybliku getAktualniStavy() {
+        /* init */
+        Kyblik kyblik = null;
+        int[] stavy = new int[this.pocet];
+        int i = 0;
+        /* musime zjistit stav z kybliku */
+        Iterator it = kybliky.iterator();
+        while ( it.hasNext() ) {
+            kyblik = (Kyblik) it.next();
+            stavy[i] = kyblik.getAktualneVody();
+            i++;
+        }
+        return new StavyKybliku(stavy);
+    }
+
+    /**
+     * Vrati pocet kybliku
+     */
+    public int getPocetKybliku() {
+        return this.pocet;
+    }
+
+    /**
+     * Pridame jeden stav kybliku, ktery jsme zrovna prosli a uz ho nechceme v budoucnu prochazet
+     * @param stav
+     */
+    public void addStav(StavyKybliku stav) {
+        this.closed.add(stav);
+    }
+
+    /**
+     * Vrati nam, jestli je stav novy, nebo jsme ho jiz prochazeli
+     * @param stav
+     * @return boolean
+     */
+    public boolean isStavNovy(StavyKybliku stav) {
+        return this.closed.contains(stav);
     }
 
 }
