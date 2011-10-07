@@ -30,6 +30,12 @@ public class Nalevna {
      * @param zdrojovy
      * @param cilovy
      */
+
+    /**
+     * TODO
+     * - prelitKyblik(StavKybliku, ID zdroj, ID cil)
+     *
+     */
     public void prelitKyblik(Kyblik zdrojovy, Kyblik cilovy) {
 
         /* init cilovy */
@@ -50,6 +56,24 @@ public class Nalevna {
         /* nastavime novy obsahy */
         zdrojovy.setAktualneVody(novyStavCilovy);
         cilovy.setAktualneVody(novyStavZdrojovy);
+
+    }
+
+    /**
+     * Vylije kyblik s danym id v dannem stavovem prostoru
+     * @param stav
+     * @param id
+     */
+    public void vylitKyblik(StavyKybliku stav, int id) {
+
+    }
+
+    /**
+     * Naplni kyblik s danym id v danem stavu stavoveho prostoru
+     * @param stav
+     * @param id
+     */
+    public void naplnitKyblik(StavyKybliku stav, int id) {
 
     }
 
