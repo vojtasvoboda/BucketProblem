@@ -30,17 +30,13 @@ public class StavyKybliku implements Cloneable {
         this.rodice = new ArrayList<StavyKybliku>();
     }
 
-    /**
-     *
-     * @return
-     */
     public List<StavyKybliku> getParents() {
         return this.rodice;
     }
 
-    public void setParents(List<StavyKybliku> list) {
-        this.rodice = list;
-        this.rodice.add(this);
+    public void setYourselfToParents() {
+        // this.rodice = list;
+        this.rodice.add(this.clone());
     }
 
     /**
@@ -149,6 +145,12 @@ public class StavyKybliku implements Cloneable {
             kyb = (Kyblik) it.next();
             novy.kybliky.add(new Kyblik(kyb.getCislo(), kyb.getAktualneVody(), kyb.getKapacita(), kyb.getCilovyStav()));
         }
+        it = this.rodice.iterator();
+        StavyKybliku stav;
+        while( it.hasNext() ) {
+            stav = (StavyKybliku) it.next();
+            novy.rodice.add(stav);
+        }
         return novy;
     }
 
@@ -163,5 +165,6 @@ public class StavyKybliku implements Cloneable {
         }
         return vypis;
     }
+
 
 }

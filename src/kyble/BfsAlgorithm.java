@@ -38,20 +38,23 @@ public class BfsAlgorithm implements IAlgorithm {
         System.out.println("- cilovy stav: " + startovni.getCiloveObsahyString());
 
         /* vlozime do fronty pocatecni uzel a odstartujeme prubeh */
-        fronta.add(startovni);
-        nalevna.addOpenedStav(startovni);
+        startovni.setYourselfToParents();
+        fronta.add(startovni.clone());
+        nalevna.addOpenedStav(startovni.clone());
 
         /* dokud neni fronta prazdna, tak prochazej uzly */
         /* vyjmi prvni uzel ve fronte a expanduj */
         while( !fronta.isEmpty() ) {
             aktualni = fronta.pop();
-            // System.out.println("Vyjimam ze zasobniku " + aktualni.getAktualniObsahyString());
+            System.out.println("Vyjimam ze zasobniku " + aktualni.getAktualniObsahyString());
+            System.out.print("Jeho rodice jsou: "); nalevna.vypisFrontuStavu(startovni.getParents());
             // zjistime nasledniky pro zarazeni do fronty a vlozime
             fronta.addAll(ziskejNoveStavy(aktualni));
             cesta++;
             // pokud je to hledany stav, tak return, jinak stav uzavreme
             if ( aktualni.isCilovy() ) {
                 System.out.println("Nasli jsme cilovy stav " + aktualni.getAktualniObsahyString());
+                nalevna.setAktualniStav(aktualni);
                 return cesta;
             }
         }
@@ -67,8 +70,10 @@ public class BfsAlgorithm implements IAlgorithm {
     private List<StavyKybliku> ziskejNoveStavy(StavyKybliku aktualni) {
         /* init */
         StavyKybliku novy = aktualni.clone();
+        StavyKybliku exp;
         List<StavyKybliku> noveStavy = new ArrayList<StavyKybliku>();
-        // System.out.println("Spoustime expanzi novych stavu.");
+        List<StavyKybliku> rodice = aktualni.clone().getParents();
+        System.out.println("Spoustime expanzi novych stavu.");
 
         /* pro kazdy kyblik muzeme udelat tri operace */
         /* vylit ho; naplnit ho; prelit ho na souseda */
@@ -83,13 +88,20 @@ public class BfsAlgorithm implements IAlgorithm {
             puvodniStav = kyb.getAktualneVody();
             if ( puvodniStav == 0 ) continue;
             kyb.vylejKyblik();
-            // System.out.println("Vzniknul stav " + novy.getAktualniObsahyString());
+            System.out.println("Vzniknul stav " + novy.getAktualniObsahyString());
             // pokud vznikne novy stav, tak pridame na zasobnik
             if ( nalevna.isStavNovy(novy) ) {
-                novy.setParents(aktualni.getParents());
-                noveStavy.add(novy.clone());
-                nalevna.addOpenedStav(novy.clone());
-                // System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
+                System.out.print("Novy pred ");
+                nalevna.vypisFrontuStavu(novy.getParents());
+                exp = novy.clone();
+                System.out.print("Exp pred ");
+                nalevna.vypisFrontuStavu(exp.getParents());
+                exp.setYourselfToParents();
+                System.out.print("Exp po ");
+                nalevna.vypisFrontuStavu(exp.getParents());
+                noveStavy.add(exp);
+                nalevna.addOpenedStav(exp);
+                System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
             }
             // obnovime kyblik, abychom vzdy delali jenom jednu akci
             kyb.setAktualneVody(puvodniStav);
@@ -103,13 +115,20 @@ public class BfsAlgorithm implements IAlgorithm {
             puvodniStav = kyb.getAktualneVody();
             if ( puvodniStav == kyb.getKapacita() ) continue;
             kyb.naplnKyblik();
-            // System.out.println("Vzniknul stav " + novy.getAktualniObsahyString());
+            System.out.println("Vzniknul stav " + novy.getAktualniObsahyString());
             // pokud vznikne novy stav, tak pridame na zasobnik
             if ( nalevna.isStavNovy(novy)) {
-                novy.setParents(aktualni.getParents());
-                noveStavy.add(novy.clone());
-                nalevna.addOpenedStav(novy.clone());
-                // System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
+                System.out.print("Novy pred ");
+                nalevna.vypisFrontuStavu(novy.getParents());
+                exp = novy.clone();
+                System.out.print("Exp pred ");
+                nalevna.vypisFrontuStavu(exp.getParents());
+                exp.setYourselfToParents();
+                System.out.print("Exp po ");
+                nalevna.vypisFrontuStavu(exp.getParents());
+                noveStavy.add(exp);
+                nalevna.addOpenedStav(exp);
+                System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
             }
             // obnovime kyblik, abychom vzdy delali jenom jednu akci
             kyb.setAktualneVody(puvodniStav);
@@ -132,13 +151,18 @@ public class BfsAlgorithm implements IAlgorithm {
                 if ( puvodniStav == 0 ) continue;
                 if ( puvodniStav2 == kyb2.getKapacita() ) continue;
                 kyb.prelejKyblik(kyb2);
-                // System.out.println("Vzniknul stav " + novy.getAktualniObsahyString());
+                System.out.println("Vzniknul stav " + novy.getAktualniObsahyString());
                 // pokud vznikne novy stav, tak pridame na zasobnik
                 if ( nalevna.isStavNovy(novy)) {
-                    novy.setParents(aktualni.getParents());
-                    noveStavy.add(novy.clone());
-                    nalevna.addOpenedStav(novy.clone());
-                    // System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
+                    exp = novy.clone();
+                    System.out.print("Exp pred ");
+                    nalevna.vypisFrontuStavu(exp.getParents());
+                    exp.setYourselfToParents();
+                    System.out.print("Exp po ");
+                    nalevna.vypisFrontuStavu(exp.getParents());
+                    noveStavy.add(exp);
+                    nalevna.addOpenedStav(exp);
+                    System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
                 }
                 // obnovime kyblik, abychom vzdy delali jenom jednu akci
                 kyb.setAktualneVody(puvodniStav);

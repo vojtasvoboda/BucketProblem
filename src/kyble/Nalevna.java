@@ -41,7 +41,10 @@ public class Nalevna {
             return 0;
         }
         this.mujAlgoritmus.init(this);
-        return this.mujAlgoritmus.computeBuckets();
+        int cesta = this.mujAlgoritmus.computeBuckets();
+        System.out.println("Vypis fronty stavu:");
+        vypisFrontuStavu(this.aktualniStav.getParents());
+        return cesta;
     }
 
     /**
@@ -120,13 +123,26 @@ public class Nalevna {
     /**
      * Vypise jiz otevrene uzly
      */
-    public void vypisOpenedFrontu() {
-        Iterator it = this.opened.iterator();
+    public void vypisFrontuStavu(List<StavyKybliku> list) {
+        Iterator it = list.iterator();
         StavyKybliku stav;
         while( it.hasNext() ) {
             stav = (StavyKybliku) it.next();
-            System.out.println("" + stav.getAktualniObsahyString() + " ");
+            System.out.print("" + stav.getAktualniObsahyString() + " ");
         }
+        System.out.println("");
+    }
+
+    /**
+     * Nastavi aktualni stav, typicky pri konci hledani
+     * @param aktualni
+     */
+    public void setAktualniStav(StavyKybliku aktualni) {
+        this.aktualniStav = aktualni;
+    }
+
+    public void vypisPosloupnostStavu() {
+
     }
 
 }
