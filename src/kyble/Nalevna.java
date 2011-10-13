@@ -11,23 +11,19 @@ import java.util.List;
  */
 public class Nalevna {
 
-    /* seznam kybliku k dispozici */
-    private List<Kyblik> kybliky;
-    private int pocet;
+    /* aktualni stav stavoveho prostoru */
     private StavyKybliku aktualniStav;
 
     /* algoritmus reseni */
     private IAlgorithm mujAlgoritmus;
 
     /* stavy co jsme jiz prosli */
-    List<StavyKybliku> opened = new ArrayList<StavyKybliku>();
+    List<StavyKybliku> openedStates = new ArrayList<StavyKybliku>();
 
     /**
      * Konstruktor
      */
     public Nalevna(List<Kyblik> kybliky) {
-        this.kybliky = kybliky;
-        this.pocet = kybliky.size();
         this.aktualniStav = new StavyKybliku(kybliky);
     }
 
@@ -37,23 +33,15 @@ public class Nalevna {
      */
     public int computeBuckets() {
         if ( this.mujAlgoritmus == null ) {
-            System.err.println("Nutno nastavit strategii reseni! Pomoci Nalevna.setStrategy()");
+            System.err.println("Nutno nastavit strategii pruchodu! Pomoci Nalevna.setStrategy()!");
             return 0;
         }
         this.mujAlgoritmus.init(this);
         int cesta = this.mujAlgoritmus.computeBuckets();
         System.out.println("Vypis fronty stavu:");
         vypisFrontuStavu(this.aktualniStav.getParents());
+        System.out.println("Reseni se nachazelo v hloubce " + this.aktualniStav.getParents().size());
         return cesta;
-    }
-
-    /**
-     * Zjisti, jestli je aktualni stav cilovy
-     * @param stav
-     * @return boolean stav je cilovy
-     */
-    public boolean isStavCilovy(StavyKybliku stav) {
-        return this.aktualniStav.equals(stav);
     }
 
     /**
@@ -65,18 +53,11 @@ public class Nalevna {
     }
 
     /**
-     * Vrati pocet kybliku
-     */
-    public int getPocetKybliku() {
-        return this.pocet;
-    }
-
-    /**
      * Pridame jeden stav kybliku, ktery jsme zrovna prosli a uz ho nechceme v budoucnu prochazet
      * @param stav
      */
     public void addOpenedStav(StavyKybliku stav) {
-        this.opened.add(stav);
+        this.openedStates.add(stav);
     }
 
     /**
@@ -87,7 +68,7 @@ public class Nalevna {
     public boolean isStavNovy(StavyKybliku testovany) {
         // System.out.println("Aktualni stav Opened:"); this.vypisOpenedFrontu();
         // projdeme opened stavy
-        Iterator it = this.opened.iterator();
+        Iterator it = this.openedStates.iterator();
         StavyKybliku stav;
         /* nejdriv projdeme vsechny otevrene stavy */
         while( it.hasNext() ) {

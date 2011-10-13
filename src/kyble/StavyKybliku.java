@@ -30,13 +30,19 @@ public class StavyKybliku implements Cloneable {
         this.rodice = new ArrayList<StavyKybliku>();
     }
 
+    /**
+     * Vrati seznam rodicu
+     * @return List<StavyKybliku> rodice
+     */
     public List<StavyKybliku> getParents() {
         return this.rodice;
     }
 
-    public void setYourselfToParents() {
-        // this.rodice = list;
-        this.rodice.add(this.clone());
+    /**
+     * Prida sama sebe na seznam rodicu
+     */
+    public void addYourselfToParents() {
+        this.rodice.add(this);
     }
 
     /**

@@ -17,7 +17,7 @@ public class Main {
     /* vstupni soubor */
     final static String FILE_NAME = "bu.inst.dat";
     /* pocet radku (pro testovani) */
-    final static int LINES_NO = 16;
+    final static int LINES_NO = 1;
 
     /**
      * @param args the command line arguments
@@ -37,7 +37,7 @@ public class Main {
         long lastTime = startTime;
 
         /* projdeme vsechny instance */
-        for (int i = 15; i < LINES_NO; i++) {
+        for (int i = 0; i < LINES_NO; i++) {
 
             /* nacteme si kybliky */
             kybliky = loadItemFromFile(instanceProblemu[i]);
@@ -52,6 +52,7 @@ public class Main {
             /* konec mereni casu */
             lastTime = System.currentTimeMillis() - lastTime;
             System.out.println("Vypocet instance " + instanceProblemu[i][0] + " trval " + lastTime + "ms");
+            lastTime = System.currentTimeMillis();
         }
 
         /* konec mereni casu */
