@@ -17,7 +17,7 @@ public class Main {
     /* vstupni soubor */
     final static String FILE_NAME = "bu.inst.dat";
     /* pocet radku (pro testovani) */
-    final static int LINES_NO = 1;
+    final static int LINES_NO = 2;
 
     /**
      * @param args the command line arguments
@@ -32,8 +32,12 @@ public class Main {
         List<Kyblik> kybliky = new ArrayList<Kyblik>(); // vstupni kybliky
         int delkaCesty = 0; // vystupni delka cesty k cilove konfiguraci
 
+        /* zapnu mereni casu */
+        long startTime = System.currentTimeMillis();
+        long lastTime = startTime;
+
         /* projdeme vsechny instance */
-        for (int i = 0; i < LINES_NO; i++) {
+        for (int i = 1; i < LINES_NO; i++) {
 
             /* nacteme si kybliky */
             kybliky = loadItemFromFile(instanceProblemu[i]);
@@ -44,7 +48,16 @@ public class Main {
             // nalevna.setStragey(new AstarAlgorithm());
             delkaCesty = nalevna.computeBuckets();
             System.out.println("Delka cesty pro instanci " + instanceProblemu[i][0] + " byla " + delkaCesty);
+
+            /* konec mereni casu */
+            lastTime = System.currentTimeMillis() - lastTime;
+            System.out.println("Vypocet instance " + instanceProblemu[i][0] + " trval " + lastTime + "ms");
         }
+
+        /* konec mereni casu */
+        long endTime = System.currentTimeMillis();
+        endTime = endTime - startTime;
+        System.out.println("Vypocet vseho trvalo " + endTime + "ms");
 
     }
 

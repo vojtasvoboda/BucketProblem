@@ -57,19 +57,19 @@ public class Kyblik {
         int cilovyAktualne = cilovy.getAktualneVody();
 
         /* init zdrojovy */
-        int kolikMuzeme = this.getAktualneVody();
+        int kolikMuzemeZdrojovy = this.getAktualneVody();
 
         /* vypocitame novy stav cilovyho */
-        int novyStavCilovy = cilovyAktualne + kolikMuzeme;
+        int novyStavCilovy = cilovyAktualne + kolikMuzemeZdrojovy;
         if ( novyStavCilovy > cilovyKapacita ) novyStavCilovy = cilovyKapacita;
 
         /* vypocitame novy stav zdrojoveho */
         int kolikSeUlilo = novyStavCilovy - cilovyAktualne;
-        int novyStavZdrojovy = kolikMuzeme - kolikSeUlilo;
+        int novyStavZdrojovy = kolikMuzemeZdrojovy - kolikSeUlilo;
 
         /* nastavime novy obsahy */
-        this.setAktualneVody(novyStavCilovy);
-        cilovy.setAktualneVody(novyStavZdrojovy);
+        this.setAktualneVody(novyStavZdrojovy);
+        cilovy.setAktualneVody(novyStavCilovy);
 
     }
 

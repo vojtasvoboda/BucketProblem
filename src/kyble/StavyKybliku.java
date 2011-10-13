@@ -11,6 +11,7 @@ import java.util.List;
 public class StavyKybliku implements Cloneable {
 
     private List<Kyblik> kybliky;
+    private List<StavyKybliku> rodice;
 
     /**
      * Konstruktor
@@ -18,6 +19,7 @@ public class StavyKybliku implements Cloneable {
      */
     public StavyKybliku(List<Kyblik> kybliky) {
         this.kybliky = kybliky;
+        this.rodice = new ArrayList<StavyKybliku>();
     }
 
     /**
@@ -25,6 +27,20 @@ public class StavyKybliku implements Cloneable {
      */
     public StavyKybliku() {
         this.kybliky = new ArrayList<Kyblik>();
+        this.rodice = new ArrayList<StavyKybliku>();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public List<StavyKybliku> getParents() {
+        return this.rodice;
+    }
+
+    public void setParents(List<StavyKybliku> list) {
+        this.rodice = list;
+        this.rodice.add(this);
     }
 
     /**
@@ -126,12 +142,14 @@ public class StavyKybliku implements Cloneable {
 
     @Override
     public StavyKybliku clone() {
-        try {
-            return (StavyKybliku) super.clone();
-        } catch (CloneNotSupportedException ex) {
-            System.err.println("Clone failed: " + ex);
+        StavyKybliku novy = new StavyKybliku();
+        Iterator it = this.kybliky.iterator();
+        Kyblik kyb;
+        while( it.hasNext() ) {
+            kyb = (Kyblik) it.next();
+            novy.kybliky.add(new Kyblik(kyb.getCislo(), kyb.getAktualneVody(), kyb.getKapacita(), kyb.getCilovyStav()));
         }
-        return null;
+        return novy;
     }
 
     @Override

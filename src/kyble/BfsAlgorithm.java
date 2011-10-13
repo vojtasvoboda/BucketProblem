@@ -31,7 +31,6 @@ public class BfsAlgorithm implements IAlgorithm {
         /* init */
         int cesta = 0;
         StavyKybliku aktualni = null;
-        List<StavyKybliku> noveStavy = null;
         StavyKybliku startovni = nalevna.getAktualniStav();
 
         System.out.println("Startuji Bfs algoritmus:");
@@ -46,7 +45,7 @@ public class BfsAlgorithm implements IAlgorithm {
         /* vyjmi prvni uzel ve fronte a expanduj */
         while( !fronta.isEmpty() ) {
             aktualni = fronta.pop();
-            System.out.println("Vyjimam ze zasobniku " + aktualni.getAktualniObsahyString());
+            // System.out.println("Vyjimam ze zasobniku " + aktualni.getAktualniObsahyString());
             // zjistime nasledniky pro zarazeni do fronty a vlozime
             fronta.addAll(ziskejNoveStavy(aktualni));
             cesta++;
@@ -56,7 +55,7 @@ public class BfsAlgorithm implements IAlgorithm {
                 return cesta;
             }
         }
-
+        System.out.println("Nenasli jsme cilovy stav.");
         return cesta;
     }
 
@@ -69,71 +68,81 @@ public class BfsAlgorithm implements IAlgorithm {
         /* init */
         StavyKybliku novy = aktualni.clone();
         List<StavyKybliku> noveStavy = new ArrayList<StavyKybliku>();
-        System.out.println("Spoustime expanzi novych stavu.");
+        // System.out.println("Spoustime expanzi novych stavu.");
 
         /* pro kazdy kyblik muzeme udelat tri operace */
         /* vylit ho; naplnit ho; prelit ho na souseda */
-        
-        /* takze nejdriv zkusime postupne vsechny vyprazdnit */
         Iterator it = novy.getKybliky().iterator();
         Kyblik kyb;
         int puvodniStav = 0;
+
+        /* takze nejdriv zkusime postupne vsechny vyprazdnit */
         while ( it.hasNext() ) {
             kyb = (Kyblik) it.next();
-            System.out.println("Manipuluji s kyblikem pro vyprazdneni " + kyb.toString());
+            // System.out.println("Manipuluji s kyblikem pro vyprazdneni " + kyb.toString());
             puvodniStav = kyb.getAktualneVody();
+            if ( puvodniStav == 0 ) continue;
             kyb.vylejKyblik();
-            System.out.println("Vzniknul stav " + novy.getAktualniObsahyString());
+            // System.out.println("Vzniknul stav " + novy.getAktualniObsahyString());
             // pokud vznikne novy stav, tak pridame na zasobnik
             if ( nalevna.isStavNovy(novy) ) {
-                noveStavy.add(novy);
-                nalevna.addOpenedStav(novy);
-                System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
+                novy.setParents(aktualni.getParents());
+                noveStavy.add(novy.clone());
+                nalevna.addOpenedStav(novy.clone());
+                // System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
             }
             // obnovime kyblik, abychom vzdy delali jenom jednu akci
             kyb.setAktualneVody(puvodniStav);
         }
 
         /* potom zkusime kybliky postupne naplnit */
-        novy = aktualni;
         it = novy.getKybliky().iterator();
         while ( it.hasNext() ) {
             kyb = (Kyblik) it.next();
-            System.out.println("Manipuluji s kyblikem pro naplneni " + kyb.toString());
+            // System.out.println("Manipuluji s kyblikem pro naplneni " + kyb.toString());
             puvodniStav = kyb.getAktualneVody();
+            if ( puvodniStav == kyb.getKapacita() ) continue;
             kyb.naplnKyblik();
+            // System.out.println("Vzniknul stav " + novy.getAktualniObsahyString());
             // pokud vznikne novy stav, tak pridame na zasobnik
             if ( nalevna.isStavNovy(novy)) {
-                noveStavy.add(novy);
-                nalevna.addOpenedStav(novy);
-                System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
+                novy.setParents(aktualni.getParents());
+                noveStavy.add(novy.clone());
+                nalevna.addOpenedStav(novy.clone());
+                // System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
             }
             // obnovime kyblik, abychom vzdy delali jenom jednu akci
             kyb.setAktualneVody(puvodniStav);
         }
 
         /* nakonec zkusime prelevat vodu na jednotlive sousedy */
-        novy = aktualni;
         it = novy.getKybliky().iterator();
+        Iterator it2;
+        int puvodniStav2 = 0;
         while ( it.hasNext() ) {
             kyb = (Kyblik) it.next();
-            System.out.println("Manipuluji s kyblikem pro preliti " + kyb.toString());
             // ale prelit kyblik muzeme do jakehokoli souseda
-            Iterator it2 = novy.getKybliky().iterator();
+            it2 = novy.getKybliky().iterator();
             Kyblik kyb2;
             while( it2.hasNext() ) {
                 kyb2 = (Kyblik) it2.next();
                 if ( kyb.equals(kyb2)) continue;
                 puvodniStav = kyb.getAktualneVody();
-                kyb.prelejKyblik(kyb);
+                puvodniStav2 = kyb2.getAktualneVody();
+                if ( puvodniStav == 0 ) continue;
+                if ( puvodniStav2 == kyb2.getKapacita() ) continue;
+                kyb.prelejKyblik(kyb2);
+                // System.out.println("Vzniknul stav " + novy.getAktualniObsahyString());
                 // pokud vznikne novy stav, tak pridame na zasobnik
                 if ( nalevna.isStavNovy(novy)) {
-                    noveStavy.add(novy);
-                    nalevna.addOpenedStav(novy);
-                    System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
+                    novy.setParents(aktualni.getParents());
+                    noveStavy.add(novy.clone());
+                    nalevna.addOpenedStav(novy.clone());
+                    // System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
                 }
                 // obnovime kyblik, abychom vzdy delali jenom jednu akci
                 kyb.setAktualneVody(puvodniStav);
+                kyb2.setAktualneVody(puvodniStav2);
             }
         }
 

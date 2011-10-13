@@ -73,7 +73,6 @@ public class Nalevna {
      * @param stav
      */
     public void addOpenedStav(StavyKybliku stav) {
-        System.out.println("Pridavam novy stav do Opened: " + stav.getAktualniObsahyString());
         this.opened.add(stav);
     }
 
@@ -83,21 +82,19 @@ public class Nalevna {
      * @return boolean
      */
     public boolean isStavNovy(StavyKybliku testovany) {
-        System.out.println("Spoustim testovani, jestli je stav novy " + testovany.getAktualniObsahyString());
-        System.out.println("Aktualni stav Opened:");
-        this.vypisOpenedFrontu();
+        // System.out.println("Aktualni stav Opened:"); this.vypisOpenedFrontu();
         // projdeme opened stavy
         Iterator it = this.opened.iterator();
         StavyKybliku stav;
         /* nejdriv projdeme vsechny otevrene stavy */
         while( it.hasNext() ) {
             stav = (StavyKybliku) it.next();
-            System.out.println("Porovnavam " + testovany.getAktualniObsahyString() + " s " + stav.getAktualniObsahyString());
+            // System.out.print("Porovnavam " + testovany.getAktualniObsahyString() + " s " + stav.getAktualniObsahyString() + " ");
             if (stav.equals(testovany)) {
-                System.out.println("- a je stejny");
+                // System.out.println("- a je stejny");
                 return false;
             } else {
-                System.out.println("- a neni stejny");
+                // System.out.println("- a neni stejny");
             }
         }
         return true;
@@ -126,7 +123,6 @@ public class Nalevna {
     public void vypisOpenedFrontu() {
         Iterator it = this.opened.iterator();
         StavyKybliku stav;
-        Kyblik kyb;
         while( it.hasNext() ) {
             stav = (StavyKybliku) it.next();
             System.out.println("" + stav.getAktualniObsahyString() + " ");
