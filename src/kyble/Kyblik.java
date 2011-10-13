@@ -6,6 +6,7 @@ package kyble;
  */
 public class Kyblik {
 
+    private int cislo;
     private int aktualneVody;
     private int kapacita;
     private int cilovyStav;
@@ -16,7 +17,8 @@ public class Kyblik {
      * @param kapacita kolik se do kybliku vejde maximalne
      * @param cilovyStav kolik chceme aby v kybliku bylo
      */
-    public Kyblik(int aktualneVody, int kapacita, int cilovyStav) {
+    public Kyblik(int cislo, int aktualneVody, int kapacita, int cilovyStav) {
+        this.cislo = cislo;
         this.aktualneVody = aktualneVody;
         this.kapacita = kapacita;
         this.cilovyStav = cilovyStav;
@@ -44,10 +46,67 @@ public class Kyblik {
        this.aktualneVody = 0;
     }
 
+    /**
+     * Provede preliti jednoho kybliku do druheho
+     * @param cilovy
+     */
+    public void prelejKyblik(Kyblik cilovy) {
+
+        /* init cilovy */
+        int cilovyKapacita = cilovy.getKapacita();
+        int cilovyAktualne = cilovy.getAktualneVody();
+
+        /* init zdrojovy */
+        int kolikMuzeme = this.getAktualneVody();
+
+        /* vypocitame novy stav cilovyho */
+        int novyStavCilovy = cilovyAktualne + kolikMuzeme;
+        if ( novyStavCilovy > cilovyKapacita ) novyStavCilovy = cilovyKapacita;
+
+        /* vypocitame novy stav zdrojoveho */
+        int kolikSeUlilo = novyStavCilovy - cilovyAktualne;
+        int novyStavZdrojovy = kolikMuzeme - kolikSeUlilo;
+
+        /* nastavime novy obsahy */
+        this.setAktualneVody(novyStavCilovy);
+        cilovy.setAktualneVody(novyStavZdrojovy);
+
+    }
+
+    /**
+     * Vypis obsahu kybliku
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "{" + getCislo() + "," + getKapacita() + "," + getAktualneVody() + "," + getCilovyStav() + "}";
+    }
+
+    /**
+     * Porovnani dvou kybliku
+     * @param kyb
+     * @return
+     */
+    public boolean equals(Kyblik kyb) {
+        if ( kyb.getCislo() != this.getCislo() ) return false;
+        if ( kyb.getAktualneVody() != this.getAktualneVody() ) return false;
+        if ( kyb.getKapacita() != this.getKapacita() ) return false;
+        if ( kyb.getCilovyStav() != this.getCilovyStav() ) return false;
+        return true;
+    }
+
+    /**
+     * Vrati aktualni stav vody
+     * @return
+     */
     public int getAktualneVody() {
         return aktualneVody;
     }
 
+    /**
+     * Nastavi aktualni stav vody
+     * @param aktualneVody
+     */
     public void setAktualneVody(int aktualneVody) {
         this.aktualneVody = aktualneVody;
     }
@@ -66,6 +125,14 @@ public class Kyblik {
 
     public void setKapacita(int kapacita) {
         this.kapacita = kapacita;
+    }
+
+    public int getCislo() {
+        return cislo;
+    }
+
+    public void setCislo(int cislo) {
+        this.cislo = cislo;
     }
 
 }

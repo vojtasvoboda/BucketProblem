@@ -100,6 +100,7 @@ public class Main {
         int obsah = 0;
         int koncovyObsah = 0;
         List<Kyblik> kybliky = new ArrayList<Kyblik>();
+        int cislo = 0;
 
         /* ID # v1 v2 v3 v4 v5 s1 s2 s3 s4 s5 t1 t2 t3 t4 t5 */
         /* 11 5 14 10  6  2  8  0  0  1  0  0 12  6  4  1  8 */
@@ -109,9 +110,10 @@ public class Main {
             kapacita = Integer.parseInt(parametry[i]);
             obsah = Integer.parseInt(parametry[i+pocetZaznamu]);
             koncovyObsah = Integer.parseInt(parametry[i+pocetZaznamu+pocetZaznamu]);
-            // System.out.println("Pridavam kyblik {" + kapacita + "," + obsah + "," + koncovyObsah + "}");
+            System.out.println("Pridavam kyblik {" + cislo + "," + kapacita + "," + obsah + "," + koncovyObsah + "} ze souboru.");
             // pridame polozky
-            kybliky.add(new Kyblik(obsah, kapacita, koncovyObsah));
+            kybliky.add(new Kyblik(cislo, obsah, kapacita, koncovyObsah));
+            cislo++;
         }
         return kybliky;
     }

@@ -14,10 +14,13 @@ public class Nalevna {
     /* seznam kybliku k dispozici */
     private List<Kyblik> kybliky;
     private int pocet;
+    private StavyKybliku aktualniStav;
+
+    /* algoritmus reseni */
     private IAlgorithm mujAlgoritmus;
 
     /* stavy co jsme jiz prosli */
-    List<StavyKybliku> closed = new ArrayList<StavyKybliku>();
+    List<StavyKybliku> opened = new ArrayList<StavyKybliku>();
 
     /**
      * Konstruktor
@@ -25,6 +28,7 @@ public class Nalevna {
     public Nalevna(List<Kyblik> kybliky) {
         this.kybliky = kybliky;
         this.pocet = kybliky.size();
+        this.aktualniStav = new StavyKybliku(kybliky);
     }
 
     /**
@@ -34,99 +38,27 @@ public class Nalevna {
     public int computeBuckets() {
         if ( this.mujAlgoritmus == null ) {
             System.err.println("Nutno nastavit strategii reseni! Pomoci Nalevna.setStrategy()");
+            return 0;
         }
         this.mujAlgoritmus.init(this);
         return this.mujAlgoritmus.computeBuckets();
     }
 
     /**
-     * Provede preliti jednoho kybliku do druheho
-     * @param zdrojovy
-     * @param cilovy
-     */
-
-    /**
-     * TODO
-     * - prelitKyblik(StavKybliku, ID zdroj, ID cil)
-     *
-     */
-    public void prelitKyblik(Kyblik zdrojovy, Kyblik cilovy) {
-
-        /* init cilovy */
-        int cilovyKapacita = cilovy.getKapacita();
-        int cilovyAktualne = cilovy.getAktualneVody();
-
-        /* init zdrojovy */
-        int kolikMuzeme = zdrojovy.getAktualneVody();
-
-        /* vypocitame novy stav cilovyho */
-        int novyStavCilovy = cilovyAktualne + kolikMuzeme;
-        if ( novyStavCilovy > cilovyKapacita ) novyStavCilovy = cilovyKapacita;
-
-        /* vypocitame novy stav zdrojoveho */
-        int kolikSeUlilo = novyStavCilovy - cilovyAktualne;
-        int novyStavZdrojovy = kolikMuzeme - kolikSeUlilo;
-
-        /* nastavime novy obsahy */
-        zdrojovy.setAktualneVody(novyStavCilovy);
-        cilovy.setAktualneVody(novyStavZdrojovy);
-
-    }
-
-    /**
-     * Vylije kyblik s danym id v dannem stavovem prostoru
+     * Zjisti, jestli je aktualni stav cilovy
      * @param stav
-     * @param id
+     * @return boolean stav je cilovy
      */
-    public void vylitKyblik(StavyKybliku stav, int id) {
-
+    public boolean isStavCilovy(StavyKybliku stav) {
+        return this.aktualniStav.equals(stav);
     }
 
     /**
-     * Naplni kyblik s danym id v danem stavu stavoveho prostoru
-     * @param stav
-     * @param id
-     */
-    public void naplnitKyblik(StavyKybliku stav, int id) {
-
-    }
-
-    /**
-     * Vrati nam cilovy stav vsech kybliku
-     * @return StavKybliku
-     */
-    public StavyKybliku getCiloveStavy() {
-        /* init */
-        Kyblik kyblik = null;
-        int[] stavy = new int[this.pocet];
-        int i = 0;
-        /* musime zjistit stav z kybliku */
-        Iterator it = kybliky.iterator();
-        while ( it.hasNext() ) {
-            kyblik = (Kyblik) it.next();
-            stavy[i] = kyblik.getCilovyStav();
-            i++;
-        }
-        return new StavyKybliku(stavy);
-    }
-
-    /**
-     * Vrati nam startovni, nebo aktualni stavy kybliku
+     * Vrati nam startovni, nebo aktualni stav kybliku
      * @return
      */
-    public StavyKybliku getAktualniStavy() {
-        /* init */
-        Kyblik kyblik = null;
-        int[] stavy = new int[this.pocet];
-        int i = 0;
-        /* musime zjistit stav z kybliku */
-        Iterator it = kybliky.iterator();
-        while ( it.hasNext() ) {
-            kyblik = (Kyblik) it.next();
-            stavy[i] = kyblik.getAktualneVody();
-            i++;
-        }
-        return new StavyKybliku(stavy);
+    public StavyKybliku getAktualniStav() {
+        return this.aktualniStav;
     }
 
     /**
@@ -140,8 +72,9 @@ public class Nalevna {
      * Pridame jeden stav kybliku, ktery jsme zrovna prosli a uz ho nechceme v budoucnu prochazet
      * @param stav
      */
-    public void addStav(StavyKybliku stav) {
-        this.closed.add(stav);
+    public void addOpenedStav(StavyKybliku stav) {
+        System.out.println("Pridavam novy stav do Opened: " + stav.getAktualniObsahyString());
+        this.opened.add(stav);
     }
 
     /**
@@ -149,8 +82,25 @@ public class Nalevna {
      * @param stav
      * @return boolean
      */
-    public boolean isStavNovy(StavyKybliku stav) {
-        return this.closed.contains(stav);
+    public boolean isStavNovy(StavyKybliku testovany) {
+        System.out.println("Spoustim testovani, jestli je stav novy " + testovany.getAktualniObsahyString());
+        System.out.println("Aktualni stav Opened:");
+        this.vypisOpenedFrontu();
+        // projdeme opened stavy
+        Iterator it = this.opened.iterator();
+        StavyKybliku stav;
+        /* nejdriv projdeme vsechny otevrene stavy */
+        while( it.hasNext() ) {
+            stav = (StavyKybliku) it.next();
+            System.out.println("Porovnavam " + testovany.getAktualniObsahyString() + " s " + stav.getAktualniObsahyString());
+            if (stav.equals(testovany)) {
+                System.out.println("- a je stejny");
+                return false;
+            } else {
+                System.out.println("- a neni stejny");
+            }
+        }
+        return true;
     }
 
     /**
@@ -160,6 +110,27 @@ public class Nalevna {
      */
     public void setStrategy(IAlgorithm alg) {
         this.mujAlgoritmus = alg;
+    }
+
+    /**
+     * Vypise aktualni stavy kybliku
+     */
+    public void vypisAktualniStavy() {
+        System.out.println("Aktualni stavy kybliku:");
+        System.out.println(this.aktualniStav.getAktualniObsahyString());
+    }
+
+    /**
+     * Vypise jiz otevrene uzly
+     */
+    public void vypisOpenedFrontu() {
+        Iterator it = this.opened.iterator();
+        StavyKybliku stav;
+        Kyblik kyb;
+        while( it.hasNext() ) {
+            stav = (StavyKybliku) it.next();
+            System.out.println("" + stav.getAktualniObsahyString() + " ");
+        }
     }
 
 }
