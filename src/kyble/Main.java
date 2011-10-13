@@ -28,19 +28,21 @@ public class Main {
         String[][] instanceProblemu = loadFile(FILE_NAME);
 
         /* init */
-        Nalevna nalevna = null;
-        List<Kyblik> kybliky = new ArrayList<Kyblik>();
-        int delkaCesty = 0;
+        Nalevna nalevna = null; // nalevna = misto manipulace s kyblikama
+        List<Kyblik> kybliky = new ArrayList<Kyblik>(); // vstupni kybliky
+        int delkaCesty = 0; // vystupni delka cesty k cilove konfiguraci
 
         /* projdeme vsechny instance */
         for (int i = 0; i < LINES_NO; i++) {
+
             /* nacteme si kybliky */
             kybliky = loadItemFromFile(instanceProblemu[i]);
+
             /* vytvorime nalevnu - misto kde se manipuluje s kybliky, vodou atd. */
             nalevna = new Nalevna(kybliky);
-            /* spustime algoritmus */
-            BfsAlgorithm bfs = new BfsAlgorithm(nalevna);
-            delkaCesty = bfs.computeBuckets();
+            nalevna.setStrategy(new BfsAlgorithm());
+            // nalevna.setStragey(new AstarAlgorithm());
+            delkaCesty = nalevna.computeBuckets();
             System.out.println("Delka cesty pro instanci " + instanceProblemu[i][0] + " byla " + delkaCesty);
         }
 

@@ -9,9 +9,10 @@ public class DfsAlgorithm implements IAlgorithm {
     Nalevna nalevna = null;
 
     /**
-     * Konstruktor vytvori novou instanci nalevny
+     * Neco jako konstruktor
+     * @param nalevna
      */
-    public DfsAlgorithm(Nalevna nalevna) {
+    public void init(Nalevna nalevna) {
         this.nalevna = nalevna;
     }
 

@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Implementace mista, kde se manipuluje s kybliky - lze prelit dva kybliky, vratit stav kybliku
+ * - Kontext řešení
  * @author Bc. Vojtěch Svoboda <svobovo3@fit.cvut.cz>
  */
 public class Nalevna {
@@ -13,6 +14,7 @@ public class Nalevna {
     /* seznam kybliku k dispozici */
     private List<Kyblik> kybliky;
     private int pocet;
+    private IAlgorithm mujAlgoritmus;
 
     /* stavy co jsme jiz prosli */
     List<StavyKybliku> closed = new ArrayList<StavyKybliku>();
@@ -23,6 +25,18 @@ public class Nalevna {
     public Nalevna(List<Kyblik> kybliky) {
         this.kybliky = kybliky;
         this.pocet = kybliky.size();
+    }
+
+    /**
+     * Spusti vypocet cesty k cilove konfiguraci
+     * @return
+     */
+    public int computeBuckets() {
+        if ( this.mujAlgoritmus == null ) {
+            System.err.println("Nutno nastavit strategii reseni! Pomoci Nalevna.setStrategy()");
+        }
+        this.mujAlgoritmus.init(this);
+        return this.mujAlgoritmus.computeBuckets();
     }
 
     /**
@@ -137,6 +151,15 @@ public class Nalevna {
      */
     public boolean isStavNovy(StavyKybliku stav) {
         return this.closed.contains(stav);
+    }
+
+    /**
+     * Nastavime algoritmus resici problem
+     * Design pattern Strategy
+     * @param alg
+     */
+    public void setStrategy(IAlgorithm alg) {
+        this.mujAlgoritmus = alg;
     }
 
 }

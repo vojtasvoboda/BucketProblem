@@ -13,4 +13,9 @@ public interface IAlgorithm {
      */
     public int computeBuckets();
 
+    /**
+     * Neco jako konstruktor
+     */
+    public void init(Nalevna nalevna);
+
 }

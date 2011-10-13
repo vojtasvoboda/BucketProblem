@@ -16,9 +16,10 @@ public class BfsAlgorithm implements IAlgorithm {
     LinkedList<StavyKybliku> fronta = new LinkedList<StavyKybliku>();
 
     /**
-     * Konstruktor vytvori novou instanci nalevny
+     * Neco jako konstruktor
+     * @param nalevna
      */
-    public BfsAlgorithm(Nalevna nalevna) {
+    public void init(Nalevna nalevna) {
         this.nalevna = nalevna;
     }
 

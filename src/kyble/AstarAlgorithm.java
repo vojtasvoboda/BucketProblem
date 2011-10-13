@@ -9,9 +9,10 @@ public class AstarAlgorithm implements IAlgorithm {
     Nalevna nalevna = null;
 
     /**
-     * Konstruktor vytvori novou instanci nalevny
+     * Neco jako konstruktor
+     * @param nalevna
      */
-    public AstarAlgorithm(Nalevna nalevna) {
+    public void init(Nalevna nalevna) {
         this.nalevna = nalevna;
     }
 
@@ -21,5 +22,6 @@ public class AstarAlgorithm implements IAlgorithm {
     public int computeBuckets() {
         return 0;
     }
+
 
 }
