@@ -11,20 +11,30 @@ import java.util.List;
  */
 public class Nalevna {
 
-    /* aktualni stav stavoveho prostoru */
-    private StavyKybliku aktualniStav;
-
     /* algoritmus reseni */
     private IAlgorithm mujAlgoritmus;
+
+    /* aktualni stav stavoveho prostoru */
+    private StavyKybliku aktualniStav;
 
     /* stavy co jsme jiz prosli */
     List<StavyKybliku> openedStates = new ArrayList<StavyKybliku>();
 
     /**
-     * Konstruktor
+     * Konstruktor nalevny
+     * @param List<Kyblik> seznam dostupnych kybliku s vychozi konfiguraci
      */
     public Nalevna(List<Kyblik> kybliky) {
         this.aktualniStav = new StavyKybliku(kybliky);
+    }
+
+    /**
+     * Nastavime strategii resici problem
+     * Design pattern Strategy
+     * @param alg
+     */
+    public void setStrategy(IAlgorithm alg) {
+        this.mujAlgoritmus = alg;
     }
 
     /**
@@ -42,14 +52,6 @@ public class Nalevna {
         vypisFrontuStavu(this.aktualniStav.getParents());
         System.out.println("Reseni se nachazelo v hloubce " + this.aktualniStav.getParents().size());
         return cesta;
-    }
-
-    /**
-     * Vrati nam startovni, nebo aktualni stav kybliku
-     * @return
-     */
-    public StavyKybliku getAktualniStav() {
-        return this.aktualniStav;
     }
 
     /**
@@ -85,15 +87,6 @@ public class Nalevna {
     }
 
     /**
-     * Nastavime algoritmus resici problem
-     * Design pattern Strategy
-     * @param alg
-     */
-    public void setStrategy(IAlgorithm alg) {
-        this.mujAlgoritmus = alg;
-    }
-
-    /**
      * Vypise aktualni stavy kybliku
      */
     public void vypisAktualniStavy() {
@@ -114,16 +107,12 @@ public class Nalevna {
         System.out.println("");
     }
 
-    /**
-     * Nastavi aktualni stav, typicky pri konci hledani
-     * @param aktualni
-     */
-    public void setAktualniStav(StavyKybliku aktualni) {
-        this.aktualniStav = aktualni;
+    public StavyKybliku getAktualniStav() {
+        return this.aktualniStav;
     }
 
-    public void vypisPosloupnostStavu() {
-
+    public void setAktualniStav(StavyKybliku aktualni) {
+        this.aktualniStav = aktualni;
     }
 
 }

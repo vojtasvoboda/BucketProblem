@@ -44,8 +44,13 @@ public class Main {
 
             /* vytvorime nalevnu - misto kde se manipuluje s kybliky, vodou atd. */
             nalevna = new Nalevna(kybliky);
+
+            /* zvolime strategii pruchodu */
             nalevna.setStrategy(new BfsAlgorithm());
+            // nalevna.setStrategy(new DfsAlgorithm());
             // nalevna.setStragey(new AstarAlgorithm());
+
+            /* spustime vypocet */
             delkaCesty = nalevna.computeBuckets();
             System.out.println("Delka cesty pro instanci " + instanceProblemu[i][0] + " byla " + delkaCesty);
 

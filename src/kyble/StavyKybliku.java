@@ -72,9 +72,9 @@ public class StavyKybliku implements Cloneable {
     }
 
     /**
-     * Kontrola totoznosti
+     * Kontrola shodnoti s jinym stavem
      * @param testovany
-     * @return
+     * @return boolean - je shodny, nebo ne
      */
     public boolean equals(StavyKybliku testovany) {
         Iterator it = testovany.getKybliky().iterator();
@@ -94,7 +94,7 @@ public class StavyKybliku implements Cloneable {
     /**
      * Vrati jestli je stav cilovy, nebo ne
      * - projde vsechny kybliky a koukne se, jestli aktualni stav odpovida cilovemu
-     * @return
+     * @return boolean - je cilovy, nebo ne
      */
     public boolean isCilovy() {
         Iterator it = this.kybliky.iterator();
@@ -112,7 +112,7 @@ public class StavyKybliku implements Cloneable {
 
     /**
      * Vrati obsahy jako string
-     * @return
+     * @return String vypis aktualnich obsahu kybliku
      */
     public String getAktualniObsahyString() {
         String ret = "{";
@@ -128,7 +128,7 @@ public class StavyKybliku implements Cloneable {
 
     /**
      * Vrati obsahy jako string
-     * @return
+     * @return String vypis cilovych obsahu kybliku
      */
     public String getCiloveObsahyString() {
         String ret = "{";
@@ -142,6 +142,10 @@ public class StavyKybliku implements Cloneable {
         return ret;
     }
 
+    /**
+     * Naklonuje stav, abychom ho mohli jako novy vlozit na zasobnik
+     * @return
+     */
     @Override
     public StavyKybliku clone() {
         StavyKybliku novy = new StavyKybliku();
@@ -160,6 +164,10 @@ public class StavyKybliku implements Cloneable {
         return novy;
     }
 
+    /**
+     * Vypise stavy jako string
+     * @return
+     */
     @Override
     public String toString() {
         Iterator it = this.kybliky.iterator();

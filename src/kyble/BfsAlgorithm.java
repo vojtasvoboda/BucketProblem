@@ -7,7 +7,7 @@ package kyble;
 public class BfsAlgorithm extends BaseAlgorithm implements IAlgorithm {
 
     /**
-     * Implementace vlastniho algoritmu
+     * Implementace vlastniho algoritmu BFS
      * - pouziva metodu predka ziskejNoveStavy, ktera vraci expanzi ze zadaneho stavu
      */
     public int computeBuckets() {
@@ -35,6 +35,7 @@ public class BfsAlgorithm extends BaseAlgorithm implements IAlgorithm {
             // zjistime nasledniky pro zarazeni do fronty a vlozime
             fronta.addAll(super.ziskejNoveStavy(aktualni));
             cesta++;
+
             // pokud je to hledany stav, tak return, jinak stav uzavreme
             if ( aktualni.isCilovy() ) {
                 System.out.println("Nasli jsme cilovy stav " + aktualni.getAktualniObsahyString());

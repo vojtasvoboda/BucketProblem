@@ -35,6 +35,7 @@ public class DfsAlgorithm extends BaseAlgorithm implements IAlgorithm {
             // zjistime nasledniky pro zarazeni do fronty a vlozime
             fronta.addAll(0, ziskejNoveStavy(aktualni));
             cesta++;
+
             // pokud je to hledany stav, tak return, jinak stav uzavreme
             if ( aktualni.isCilovy() ) {
                 System.out.println("Nasli jsme cilovy stav " + aktualni.getAktualniObsahyString());
