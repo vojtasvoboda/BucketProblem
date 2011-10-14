@@ -29,14 +29,14 @@ public class AstarAlgorithm extends BaseAlgorithm implements IAlgorithm {
         while( !fronta.isEmpty() ) {
 
             aktualni = fronta.pop();
-            // System.out.println("Vyjimam ze zasobniku " + aktualni.getAktualniObsahyString());
+            // System.out.println("Vyjimam z fronty " + aktualni.getAktualniObsahyString());
             // System.out.print("Jeho rodice jsou: "); nalevna.vypisFrontuStavu(startovni.getParents());
 
             // zjistime nasledniky pro zarazeni do fronty a vlozime
-            fronta.addAll(ziskejNoveStavy(aktualni));
+            fronta.addAll(super.ziskejNoveStavy(aktualni));
             cesta++;
 
-            // pokud je to hledany stav, tak return, jinak stav uzavreme
+            // pokud je to hledany stav, tak return
             if ( aktualni.isCilovy() ) {
                 System.out.println("Nasli jsme cilovy stav " + aktualni.getAktualniObsahyString());
                 nalevna.setAktualniStav(aktualni);
