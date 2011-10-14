@@ -17,7 +17,7 @@ public class Main {
     /* vstupni soubor */
     final static String FILE_NAME = "bu.inst.dat";
     /* pocet radku (pro testovani) */
-    final static int LINES_NO = 1;
+    final static int LINES_NO = 16;
 
     /**
      * @param args the command line arguments
