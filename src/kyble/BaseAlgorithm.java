@@ -11,6 +11,8 @@ import java.util.List;
  */
 public class BaseAlgorithm {
 
+    private static final boolean DEBUG = false;
+
     Nalevna nalevna = null;
 
     /* fronta cekajicich uzlu */
@@ -34,7 +36,7 @@ public class BaseAlgorithm {
         StavyKybliku novy = aktualni.clone();
         StavyKybliku exp;
         List<StavyKybliku> noveStavy = new ArrayList<StavyKybliku>();
-        System.out.println("Spoustime expanzi novych stavu.");
+        if ( DEBUG ) System.out.println("Spoustime expanzi novych stavu.");
 
         /* pro kazdy kyblik muzeme udelat tri operace */
         /* vylit ho; naplnit ho; prelit ho na souseda */
@@ -48,14 +50,14 @@ public class BaseAlgorithm {
             puvodniStav = kyb.getAktualneVody();
             if ( puvodniStav == 0 ) continue;
             kyb.vylejKyblik();
-            System.out.println("Vzniknul stav " + novy.getAktualniObsahyString());
+            if ( DEBUG ) System.out.println("Vzniknul stav " + novy.getAktualniObsahyString());
             // pokud vznikne novy stav, tak pridame na zasobnik
             if ( nalevna.isStavNovy(novy) ) {
                 exp = novy.clone(); // vytvorime kopii stavu
                 exp.addYourselfToParents(); // pridame ho do cesty k rodicum
                 noveStavy.add(exp); // pridame novy stav na zasobnik
                 nalevna.addOpenedStav(exp); // pridame novy stav do fronty otevrenych
-                System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
+                if ( DEBUG ) System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
             }
             // obnovime kyblik, abychom vzdy delali jenom jednu akci
             kyb.setAktualneVody(puvodniStav);
@@ -68,14 +70,14 @@ public class BaseAlgorithm {
             puvodniStav = kyb.getAktualneVody();
             if ( puvodniStav == kyb.getKapacita() ) continue;
             kyb.naplnKyblik();
-            System.out.println("Vzniknul stav " + novy.getAktualniObsahyString());
+            if ( DEBUG ) System.out.println("Vzniknul stav " + novy.getAktualniObsahyString());
             // pokud vznikne novy stav, tak pridame na zasobnik
             if ( nalevna.isStavNovy(novy)) {
                 exp = novy.clone();
                 exp.addYourselfToParents();
                 noveStavy.add(exp);
                 nalevna.addOpenedStav(exp);
-                System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
+                if ( DEBUG ) System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
             }
             // obnovime kyblik, abychom vzdy delali jenom jednu akci
             kyb.setAktualneVody(puvodniStav);
@@ -98,14 +100,14 @@ public class BaseAlgorithm {
                 if ( puvodniStav == 0 ) continue;
                 if ( puvodniStav2 == kyb2.getKapacita() ) continue;
                 kyb.prelejKyblik(kyb2);
-                System.out.println("Vzniknul stav " + novy.getAktualniObsahyString());
+                if ( DEBUG ) System.out.println("Vzniknul stav " + novy.getAktualniObsahyString());
                 // pokud vznikne novy stav, tak pridame na zasobnik
                 if ( nalevna.isStavNovy(novy)) {
                     exp = novy.clone();
                     exp.addYourselfToParents();
                     noveStavy.add(exp);
                     nalevna.addOpenedStav(exp);
-                    System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
+                    if ( DEBUG ) System.out.println("Pridali jsme novy stav " + novy.getAktualniObsahyString());
                 }
                 // obnovime kyblik, abychom vzdy delali jenom jednu akci
                 kyb.setAktualneVody(puvodniStav);

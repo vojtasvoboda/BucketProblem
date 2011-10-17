@@ -71,15 +71,21 @@ public class StavyKybliku implements Cloneable {
         int aktualneVody = 0;
         // vezmu prvni kyblik
         int[] cilove = this.getCiloveObsahy();
-        // projdeme vsechny stavy
+        // projdeme vsechny kybliky ve stavu
         while( it.hasNext() ) {
             kyb = (Kyblik) it.next();
             aktualneVody = kyb.getAktualneVody();
-            if ( cilove[i] == aktualneVody ) body += 2;
+            // pokud ma spravny cilovy stav
+            if ( cilove[i] == aktualneVody ) {
+                body += 2; continue;
+            }
+            // pokud ma cilovy stav jako jeden z moznych cilovych
             if ( in_array(cilove, aktualneVody) ) body += 1;
+            i++;
         }
         // nastavime novou vzdalenost i ji vratime
         this.heuristikaStavu = body;
+        // System.out.println("ComputeHeuristikaStavu na stav " + getAktualniObsahyString() + " je " + body);
         return this.heuristikaStavu;
     }
 

@@ -1,0 +1,249 @@
+run:
+Nacitam soubor: C:\Users\Vojta\Documents\NetBeansProjects\Kyble\data\bu.inst.dat, existuje: true
+Pocet zaznamu k nacteni je 5 z radku instance 11
+Pridavam kyblik {0,14,0,12} ze souboru.
+Pridavam kyblik {1,10,0,6} ze souboru.
+Pridavam kyblik {2,6,1,4} ze souboru.
+Pridavam kyblik {3,2,0,1} ze souboru.
+Pridavam kyblik {4,8,0,8} ze souboru.
+Startuji Astar algoritmus:
+- startovni stav: {0,0,1,0,0,}
+- cilovy stav: {12,6,4,1,8,}
+Nasli jsme cilovy stav {12,6,4,1,8,}
+Vypis fronty stavu:
+{0,0,1,0,8,} {14,0,1,0,8,} {4,10,1,0,8,} {4,8,1,2,8,} {4,8,1,0,8,} {4,6,1,2,8,} {6,6,1,0,8,} {1,6,6,0,8,} {1,6,6,2,6,} {1,6,6,0,6,} {1,6,6,2,4,} {1,6,6,0,4,} {0,6,6,1,4,} {4,6,6,1,0,} {4,6,6,1,8,} {12,6,6,1,0,} {12,6,0,1,6,} {12,6,6,1,6,} {12,6,4,1,8,} 
+Reseni se nachazelo v hloubce 19
+Delka cesty pro instanci 11 byla 295
+Vypocet instance 11 trval 1061ms
+------------------------------------------------
+Pocet zaznamu k nacteni je 5 z radku instance 12
+Pridavam kyblik {0,14,0,14} ze souboru.
+Pridavam kyblik {1,10,0,4} ze souboru.
+Pridavam kyblik {2,6,1,5} ze souboru.
+Pridavam kyblik {3,2,0,0} ze souboru.
+Pridavam kyblik {4,8,0,4} ze souboru.
+Startuji Astar algoritmus:
+- startovni stav: {0,0,1,0,0,}
+- cilovy stav: {14,4,5,0,4,}
+Nasli jsme cilovy stav {14,4,5,0,4,}
+Vypis fronty stavu:
+{14,0,1,0,0,} {14,1,0,0,0,} {5,10,0,0,0,} {5,4,6,0,0,} {5,4,4,2,0,} {5,4,4,0,0,} {5,4,0,0,4,} {0,4,5,0,4,} {14,4,5,0,4,} 
+Reseni se nachazelo v hloubce 9
+Delka cesty pro instanci 12 byla 268
+Vypocet instance 12 trval 530ms
+------------------------------------------------
+Pocet zaznamu k nacteni je 5 z radku instance 13
+Pridavam kyblik {0,14,0,12} ze souboru.
+Pridavam kyblik {1,10,0,6} ze souboru.
+Pridavam kyblik {2,6,1,6} ze souboru.
+Pridavam kyblik {3,2,0,2} ze souboru.
+Pridavam kyblik {4,8,0,4} ze souboru.
+Startuji Astar algoritmus:
+- startovni stav: {0,0,1,0,0,}
+- cilovy stav: {12,6,6,2,4,}
+Nasli jsme cilovy stav {12,6,6,2,4,}
+Vypis fronty stavu:
+{0,0,6,0,0,} {0,0,6,2,0,} {0,0,6,0,2,} {0,0,6,2,2,} {14,0,6,2,2,} {4,10,6,2,2,} {4,0,6,2,2,} {4,6,0,2,2,} {4,6,6,2,2,} {0,6,6,2,6,} {2,6,6,0,6,} {2,6,6,2,6,} {4,6,6,0,6,} {4,6,6,2,6,} {6,6,6,0,6,} {6,6,6,2,6,} {12,0,6,2,6,} {12,2,6,0,6,} {12,2,6,2,6,} {12,4,6,0,6,} {12,4,6,2,6,} {12,6,6,0,6,} {12,6,6,2,4,} 
+Reseni se nachazelo v hloubce 23
+Delka cesty pro instanci 13 byla 35
+Vypocet instance 13 trval 16ms
+------------------------------------------------
+Pocet zaznamu k nacteni je 5 z radku instance 14
+Pridavam kyblik {0,14,0,0} ze souboru.
+Pridavam kyblik {1,10,0,2} ze souboru.
+Pridavam kyblik {2,6,1,1} ze souboru.
+Pridavam kyblik {3,2,0,2} ze souboru.
+Pridavam kyblik {4,8,0,8} ze souboru.
+Startuji Astar algoritmus:
+- startovni stav: {0,0,1,0,0,}
+- cilovy stav: {0,2,1,2,8,}
+Nasli jsme cilovy stav {0,2,1,2,8,}
+Vypis fronty stavu:
+{0,0,0,0,1,} {0,0,0,2,1,} {0,0,2,0,1,} {0,0,2,2,1,} {0,2,2,0,1,} {0,2,2,1,0,} {0,0,2,1,2,} {0,0,1,2,2,} {0,2,1,0,2,} {0,2,1,2,2,} {0,2,1,2,8,} 
+Reseni se nachazelo v hloubce 11
+Delka cesty pro instanci 14 byla 597
+Vypocet instance 14 trval 2340ms
+------------------------------------------------
+Pocet zaznamu k nacteni je 5 z radku instance 21
+Pridavam kyblik {0,15,0,5} ze souboru.
+Pridavam kyblik {1,12,0,5} ze souboru.
+Pridavam kyblik {2,8,0,5} ze souboru.
+Pridavam kyblik {3,4,0,0} ze souboru.
+Pridavam kyblik {4,6,0,1} ze souboru.
+Startuji Astar algoritmus:
+- startovni stav: {0,0,0,0,0,}
+- cilovy stav: {5,5,5,0,1,}
+Nasli jsme cilovy stav {5,5,5,0,1,}
+Vypis fronty stavu:
+{15,0,0,0,0,} {7,0,8,0,0,} {7,0,0,0,0,} {0,0,7,0,0,} {0,0,1,0,6,} {0,0,1,0,0,} {0,1,0,0,0,} {0,1,8,0,0,} {0,9,0,0,0,} {0,5,0,4,0,} {0,5,0,0,0,} {0,0,5,0,0,} {0,12,5,0,0,} {12,0,5,0,0,} {12,0,5,4,0,} {15,0,5,1,0,} {0,0,5,1,0,} {0,5,0,1,0,} {0,5,8,1,0,} {8,5,0,1,0,} {8,5,8,1,0,} {15,5,1,1,0,} {0,5,1,1,0,} {5,0,1,1,0,} {5,12,1,1,0,} {5,5,8,1,0,} {5,5,5,4,0,} {5,5,5,0,4,} {5,5,5,4,4,} {5,5,5,2,6,} {5,5,5,2,0,} {0,5,5,2,5,} {15,5,5,2,5,} {13,5,5,4,5,} {13,5,5,0,5,} {9,5,5,4,5,} {9,5,5,0,5,} {5,5,5,4,5,} {5,5,8,1,5,} {5,5,0,1,5,} {5,5,5,1,0,} {5,5,5,0,1,} 
+Reseni se nachazelo v hloubce 42
+Delka cesty pro instanci 21 byla 586
+Vypocet instance 21 trval 2402ms
+------------------------------------------------
+Pocet zaznamu k nacteni je 5 z radku instance 22
+Pridavam kyblik {0,15,0,12} ze souboru.
+Pridavam kyblik {1,12,0,1} ze souboru.
+Pridavam kyblik {2,8,0,3} ze souboru.
+Pridavam kyblik {3,4,0,4} ze souboru.
+Pridavam kyblik {4,6,0,5} ze souboru.
+Startuji Astar algoritmus:
+- startovni stav: {0,0,0,0,0,}
+- cilovy stav: {12,1,3,4,5,}
+Nasli jsme cilovy stav {12,1,3,4,5,}
+Vypis fronty stavu:
+{0,0,0,4,0,} {0,12,0,4,0,} {0,4,8,4,0,} {0,0,8,4,4,} {0,12,8,4,4,} {12,0,8,4,4,} {12,12,8,4,4,} {12,12,0,4,4,} {12,12,4,0,4,} {12,12,4,4,4,} {15,12,1,4,4,} {0,12,1,4,4,} {12,0,1,4,4,} {12,1,0,4,4,} {12,1,4,0,4,} {12,1,4,4,4,} {15,1,4,1,4,} {0,1,4,1,4,} {4,1,0,1,4,} {4,1,8,1,4,} {12,1,0,1,4,} {12,0,1,1,4,} {12,4,1,1,0,} {12,4,1,1,6,} {12,4,1,4,3,} {15,1,1,4,3,} {0,1,1,4,3,} {4,1,1,0,3,} {4,1,1,4,3,} {4,1,1,1,6,} {10,1,1,1,0,} {10,1,1,1,6,} {15,1,1,1,1,} {0,1,1,1,1,} {1,1,1,1,0,} {1,1,1,1,6,} {1,1,1,4,3,} {1,1,1,0,3,} {0,1,1,1,3,} {15,1,1,1,3,} {12,1,1,4,3,} {12,1,1,0,3,} {12,0,1,1,3,} {12,3,1,1,0,} {12,3,1,1,6,} {12,3,1,4,3,} {12,3,1,0,3,} {12,0,1,3,3,} {12,1,0,3,3,} {12,1,3,3,0,} {12,1,3,3,6,} {12,1,3,4,5,} 
+Reseni se nachazelo v hloubce 52
+Delka cesty pro instanci 22 byla 618
+Vypocet instance 22 trval 6755ms
+------------------------------------------------
+Pocet zaznamu k nacteni je 5 z radku instance 23
+Pridavam kyblik {0,15,0,11} ze souboru.
+Pridavam kyblik {1,12,0,1} ze souboru.
+Pridavam kyblik {2,8,0,3} ze souboru.
+Pridavam kyblik {3,4,0,4} ze souboru.
+Pridavam kyblik {4,6,0,5} ze souboru.
+Startuji Astar algoritmus:
+- startovni stav: {0,0,0,0,0,}
+- cilovy stav: {11,1,3,4,5,}
+Nasli jsme cilovy stav {11,1,3,4,5,}
+Vypis fronty stavu:
+{0,0,0,4,0,} {15,0,0,4,0,} {3,12,0,4,0,} {3,4,8,4,0,} {3,0,8,4,4,} {3,12,8,4,4,} {11,12,0,4,4,} {11,4,8,4,4,} {11,4,0,4,4,} {3,4,8,4,4,} {3,4,0,4,4,} {0,4,3,4,4,} {4,0,3,4,4,} {4,12,3,4,4,} {15,1,3,4,4,} {0,1,3,4,4,} {4,1,3,0,4,} {4,0,3,1,4,} {4,12,3,1,4,} {15,1,3,1,4,} {0,1,3,1,4,} {0,1,1,1,6,} {0,1,1,4,3,} {15,1,1,4,3,} {15,1,1,0,3,} {11,1,1,4,3,} {11,5,1,0,3,} {11,5,1,4,3,} {11,5,1,1,6,} {11,11,1,1,0,} {11,11,1,1,6,} {11,11,1,4,3,} {11,12,1,3,3,} {11,0,1,3,3,} {11,1,0,3,3,} {11,1,3,3,0,} {11,1,3,3,6,} {11,1,3,4,5,} 
+Reseni se nachazelo v hloubce 38
+Delka cesty pro instanci 23 byla 827
+Vypocet instance 23 trval 12340ms
+------------------------------------------------
+Pocet zaznamu k nacteni je 5 z radku instance 24
+Pridavam kyblik {0,15,0,3} ze souboru.
+Pridavam kyblik {1,12,0,12} ze souboru.
+Pridavam kyblik {2,8,0,4} ze souboru.
+Pridavam kyblik {3,4,0,0} ze souboru.
+Pridavam kyblik {4,6,0,6} ze souboru.
+Startuji Astar algoritmus:
+- startovni stav: {0,0,0,0,0,}
+- cilovy stav: {3,12,4,0,6,}
+Nasli jsme cilovy stav {3,12,4,0,6,}
+Vypis fronty stavu:
+{0,12,0,0,0,} {12,0,0,0,0,} {12,12,0,0,0,} {12,12,0,4,0,} {6,12,0,4,6,} {6,12,0,4,0,} {6,12,4,0,0,} {6,0,4,0,0,} {0,6,4,0,0,} {0,6,4,4,0,} {4,6,4,0,0,} {4,6,4,4,0,} {0,6,4,4,4,} {0,0,4,4,4,} {15,0,4,4,4,} {3,12,4,4,4,} {3,12,4,4,6,} {3,12,4,0,6,} 
+Reseni se nachazelo v hloubce 18
+Delka cesty pro instanci 24 byla 1604
+Vypocet instance 24 trval 12090ms
+------------------------------------------------
+Pocet zaznamu k nacteni je 5 z radku instance 25
+Pridavam kyblik {0,15,0,2} ze souboru.
+Pridavam kyblik {1,12,0,0} ze souboru.
+Pridavam kyblik {2,8,0,4} ze souboru.
+Pridavam kyblik {3,4,0,3} ze souboru.
+Pridavam kyblik {4,6,0,6} ze souboru.
+Startuji Astar algoritmus:
+- startovni stav: {0,0,0,0,0,}
+- cilovy stav: {2,0,4,3,6,}
+Nasli jsme cilovy stav {2,0,4,3,6,}
+Vypis fronty stavu:
+{0,0,0,0,6,} {0,0,0,4,2,} {4,0,0,0,2,} {4,0,0,0,0,} {0,0,0,0,4,} {0,0,0,4,4,} {4,0,0,0,4,} {4,0,0,4,4,} {0,0,4,4,4,} {15,0,4,4,4,} {3,12,4,4,4,} {3,0,4,4,4,} {3,0,8,4,4,} {3,0,6,4,6,} {3,0,6,4,0,} {0,0,6,4,3,} {0,0,6,0,3,} {6,0,0,0,3,} {2,0,0,4,3,} {2,0,0,0,3,} {2,3,0,0,0,} {2,3,0,0,6,} {2,0,0,3,6,} {2,6,0,3,0,} {2,6,0,0,3,} {2,6,0,4,3,} {2,10,0,0,3,} {2,2,8,0,3,} {2,2,0,0,3,} {2,2,3,0,0,} {2,2,3,0,6,} {2,2,3,4,2,} {2,2,3,0,2,} {2,2,0,3,2,} {2,2,2,3,0,} {2,2,2,3,6,} {2,0,4,3,6,} 
+Reseni se nachazelo v hloubce 37
+Delka cesty pro instanci 25 byla 839
+Vypocet instance 25 trval 4929ms
+------------------------------------------------
+Pocet zaznamu k nacteni je 5 z radku instance 31
+Pridavam kyblik {0,14,0,13} ze souboru.
+Pridavam kyblik {1,10,0,9} ze souboru.
+Pridavam kyblik {2,12,0,12} ze souboru.
+Pridavam kyblik {3,3,0,2} ze souboru.
+Pridavam kyblik {4,8,0,7} ze souboru.
+Startuji Astar algoritmus:
+- startovni stav: {0,0,0,0,0,}
+- cilovy stav: {13,9,12,2,7,}
+Nasli jsme cilovy stav {13,9,12,2,7,}
+Vypis fronty stavu:
+{0,0,12,0,0,} {14,0,12,0,0,} {6,0,12,0,8,} {6,0,12,3,5,} {9,0,12,0,5,} {9,0,12,3,2,} {12,0,12,0,2,} {2,10,12,0,2,} {2,7,12,3,2,} {2,7,12,0,2,} {0,7,12,2,2,} {14,7,12,2,2,} {13,7,12,3,2,} {13,7,12,0,2,} {13,7,9,3,2,} {13,7,9,0,2,} {13,7,9,2,0,} {13,0,9,2,7,} {13,9,0,2,7,} {13,9,12,2,7,} 
+Reseni se nachazelo v hloubce 20
+Delka cesty pro instanci 31 byla 884
+Vypocet instance 31 trval 10889ms
+------------------------------------------------
+Pocet zaznamu k nacteni je 5 z radku instance 32
+Pridavam kyblik {0,14,0,1} ze souboru.
+Pridavam kyblik {1,10,0,5} ze souboru.
+Pridavam kyblik {2,12,0,5} ze souboru.
+Pridavam kyblik {3,3,0,3} ze souboru.
+Pridavam kyblik {4,8,0,4} ze souboru.
+Startuji Astar algoritmus:
+- startovni stav: {0,0,0,0,0,}
+- cilovy stav: {1,5,5,3,4,}
+Nasli jsme cilovy stav {1,5,5,3,4,}
+Vypis fronty stavu:
+{0,0,0,3,0,} {14,0,0,3,0,} {4,10,0,3,0,} {4,10,12,3,0,} {4,10,4,3,8,} {4,10,4,3,0,} {4,10,0,3,4,} {4,10,3,0,4,} {1,10,3,3,4,} {1,1,12,3,4,} {1,1,0,3,4,} {1,1,3,0,4,} {1,1,3,3,1,} {1,1,0,3,1,} {1,1,1,3,0,} {1,1,1,3,8,} {1,1,1,0,8,} {1,1,1,3,5,} {1,1,0,3,5,} {1,1,5,3,0,} {1,1,5,0,3,} {1,1,5,3,3,} {4,1,5,0,3,} {4,0,5,1,3,} {4,10,5,1,3,} {4,5,5,1,8,} {4,5,5,1,0,} {0,5,5,1,4,} {1,5,5,0,4,} {1,5,5,3,4,} 
+Reseni se nachazelo v hloubce 30
+Delka cesty pro instanci 32 byla 423
+Vypocet instance 32 trval 3713ms
+------------------------------------------------
+Pocet zaznamu k nacteni je 5 z radku instance 33
+Pridavam kyblik {0,14,0,0} ze souboru.
+Pridavam kyblik {1,10,0,9} ze souboru.
+Pridavam kyblik {2,12,0,6} ze souboru.
+Pridavam kyblik {3,3,0,3} ze souboru.
+Pridavam kyblik {4,8,0,1} ze souboru.
+Startuji Astar algoritmus:
+- startovni stav: {0,0,0,0,0,}
+- cilovy stav: {0,9,6,3,1,}
+Nasli jsme cilovy stav {0,9,6,3,1,}
+Vypis fronty stavu:
+{0,0,0,3,0,} {0,0,0,0,3,} {0,0,0,3,3,} {0,0,0,0,6,} {0,0,0,3,6,} {0,0,3,0,6,} {0,0,3,3,6,} {0,0,6,0,6,} {0,0,6,3,6,} {0,0,9,0,6,} {0,10,9,0,6,} {0,7,9,3,6,} {0,7,9,0,6,} {0,4,9,3,6,} {0,4,9,0,6,} {0,1,9,3,6,} {0,1,9,0,6,} {0,0,9,1,6,} {0,6,9,1,0,} {0,6,9,0,1,} {0,6,9,3,1,} {0,9,9,0,1,} {0,9,6,3,1,} 
+Reseni se nachazelo v hloubce 23
+Delka cesty pro instanci 33 byla 1377
+Vypocet instance 33 trval 14664ms
+------------------------------------------------
+Pocet zaznamu k nacteni je 5 z radku instance 34
+Pridavam kyblik {0,14,0,12} ze souboru.
+Pridavam kyblik {1,10,0,0} ze souboru.
+Pridavam kyblik {2,12,0,12} ze souboru.
+Pridavam kyblik {3,3,0,0} ze souboru.
+Pridavam kyblik {4,8,0,2} ze souboru.
+Startuji Astar algoritmus:
+- startovni stav: {0,0,0,0,0,}
+- cilovy stav: {12,0,12,0,2,}
+Nasli jsme cilovy stav {12,0,12,0,2,}
+Vypis fronty stavu:
+{14,0,0,0,0,} {2,0,12,0,0,} {0,2,12,0,0,} {12,2,0,0,0,} {12,0,0,0,2,} {12,0,12,0,2,} 
+Reseni se nachazelo v hloubce 6
+Delka cesty pro instanci 34 byla 264
+Vypocet instance 34 trval 359ms
+------------------------------------------------
+Pocet zaznamu k nacteni je 5 z radku instance 35
+Pridavam kyblik {0,14,0,7} ze souboru.
+Pridavam kyblik {1,10,0,3} ze souboru.
+Pridavam kyblik {2,12,0,7} ze souboru.
+Pridavam kyblik {3,3,0,0} ze souboru.
+Pridavam kyblik {4,8,0,0} ze souboru.
+Startuji Astar algoritmus:
+- startovni stav: {0,0,0,0,0,}
+- cilovy stav: {7,3,7,0,0,}
+Nasli jsme cilovy stav {7,3,7,0,0,}
+Vypis fronty stavu:
+{0,0,0,3,0,} {0,3,0,0,0,} {0,3,0,3,0,} {0,3,3,0,0,} {0,3,3,3,0,} {3,3,3,0,0,} {3,3,3,3,0,} {0,3,3,3,3,} {14,3,3,3,3,} {7,10,3,3,3,} {7,0,3,3,3,} {7,3,3,3,0,} {0,3,3,3,7,} {14,3,3,3,7,} {7,10,3,3,7,} {7,0,3,3,7,} {7,7,3,3,0,} {7,7,0,3,0,} {7,0,7,3,0,} {7,3,7,0,0,} 
+Reseni se nachazelo v hloubce 20
+Delka cesty pro instanci 35 byla 100
+Vypocet instance 35 trval 156ms
+------------------------------------------------
+Pocet zaznamu k nacteni je 5 z radku instance 36
+Pridavam kyblik {0,14,0,7} ze souboru.
+Pridavam kyblik {1,10,0,0} ze souboru.
+Pridavam kyblik {2,12,0,7} ze souboru.
+Pridavam kyblik {3,3,0,0} ze souboru.
+Pridavam kyblik {4,8,0,7} ze souboru.
+Startuji Astar algoritmus:
+- startovni stav: {0,0,0,0,0,}
+- cilovy stav: {7,0,7,0,7,}
+Nasli jsme cilovy stav {7,0,7,0,7,}
+Vypis fronty stavu:
+{0,0,0,0,8,} {8,0,0,0,0,} {8,0,0,0,8,} {14,0,0,0,2,} {0,0,0,0,2,} {2,0,0,0,0,} {2,0,0,0,8,} {10,0,0,0,0,} {7,0,0,3,0,} {0,0,0,3,7,} {3,0,0,0,7,} {3,0,0,3,7,} {6,0,0,0,7,} {6,0,0,3,7,} {9,0,0,0,7,} {9,7,0,0,0,} {0,7,9,0,0,} {7,0,9,0,0,} {7,9,0,0,0,} {7,9,0,0,8,} {7,10,0,0,7,} {7,7,0,3,7,} {7,7,0,0,7,} {7,0,7,0,7,} 
+Exception in thread "main" java.lang.NumberFormatException: null
+Reseni se nachazelo v hloubce 24
+Delka cesty pro instanci 36 byla 279
+Vypocet instance 36 trval 717ms
+------------------------------------------------
+        at java.lang.Integer.parseInt(Integer.java:417)
+        at java.lang.Integer.parseInt(Integer.java:499)
+        at kyble.Main.loadItemFromFile(Main.java:115)
+        at kyble.Main.main(Main.java:43)
+Java Result: 1
+BUILD SUCCESSFUL (total time: 1 minute 13 seconds)

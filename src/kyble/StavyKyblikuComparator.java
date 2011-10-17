@@ -8,6 +8,8 @@ import java.util.Comparator;
  */
 class StavyKyblikuComparator implements Comparator<StavyKybliku> {
 
+    private static boolean DEBUG = false;
+
     /**
      * Returns a negative integer, zero, or a positive integer as the
      * first argument is less than, equal to, or greater than the second.
@@ -16,20 +18,20 @@ class StavyKyblikuComparator implements Comparator<StavyKybliku> {
      * @return int flag
      */
     public int compare(StavyKybliku o1, StavyKybliku o2) {
-        System.out.print("Volame compare na stavy " + o1.getAktualniObsahyString() + " a " + o2.getAktualniObsahyString());
+        if ( DEBUG ) System.out.print("Volame compare na stavy " + o1.getAktualniObsahyString() + " a " + o2.getAktualniObsahyString());
         int prvni = o1.getHeuristikaStavu();
-        System.out.print(", prvni ma hodnotu " + prvni + " ");
+        if ( DEBUG ) System.out.print(", prvni ma hodnotu " + prvni + " ");
         int druhy = o2.getHeuristikaStavu();
-        System.out.print("druhy ma hodnotu " + druhy);
+        if ( DEBUG ) System.out.print("druhy ma hodnotu " + druhy);
         if ( prvni < druhy ) {
-            System.out.println(" - prvni je mensi");
+            if ( DEBUG ) System.out.println(" - prvni je mensi");
             return 1;
         }
         if ( prvni > druhy ) {
-            System.out.println(" - druhy je mensi");
+            if ( DEBUG ) System.out.println(" - druhy je mensi");
             return -1;
         }
-        System.out.println(" - jsou stejne");
+        if ( DEBUG ) System.out.println(" - jsou stejne");
         return 0;
     }
 

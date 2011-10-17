@@ -36,7 +36,7 @@ public class AstarAlgorithm extends BaseAlgorithm implements IAlgorithm {
 
             // aktualni = fronta.pop();
             aktualni = prioritniFronta.poll();
-            System.out.println("Vyjimam z fronty " + aktualni.getAktualniObsahyString());
+            // System.out.println("Vyjimam z fronty " + aktualni.getAktualniObsahyString());
             // System.out.print("Jeho rodice jsou: "); nalevna.vypisFrontuStavu(startovni.getParents());
 
             // zjistime nasledniky pro zarazeni do fronty a vlozime
