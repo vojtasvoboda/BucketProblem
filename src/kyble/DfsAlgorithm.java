@@ -24,15 +24,15 @@ public class DfsAlgorithm extends BaseAlgorithm implements IAlgorithm {
         fronta.add(startovni.clone());
         nalevna.addOpenedStav(startovni.clone());
 
-        /* dokud neni fronta prazdna, tak prochazej uzly */
-        /* vyjmi prvni uzel ve fronte a expanduj */
+        /* dokud neni zasobnik prazdny, tak prochazej uzly */
+        /* vyjmi prvni uzel ze zasobniku a expanduj */
         while( !fronta.isEmpty() ) {
 
             aktualni = fronta.pop();
             // System.out.println("Vyjimam z fronty " + aktualni.getAktualniObsahyString());
             // System.out.print("Jeho rodice jsou: "); nalevna.vypisFrontuStavu(startovni.getParents());
 
-            // zjistime nasledniky pro zarazeni do fronty a vlozime
+            // zjistime nasledniky pro zarazeni do zasobniku a vlozime
             fronta.addAll(0, super.ziskejNoveStavy(aktualni));
             cesta++;
 
