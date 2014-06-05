@@ -17,5 +17,5 @@ Zkušební instance
 -----------------
 Zkušební instance jsou popsány v textovém souboru. Každý řádek popisuje jednu instanci. Skládá se z čísel a oddělujících mezer. Je zakončen znakem nový řádel (LF).
 Obsahuje jednoznačné ID instance, počet kbelíků n, kapacity kbelíků Vi, počáteční obsahy Si a koncové obsahy Ti:
-ID	počet 	kapacity	počáteční obsahy	koncové obsahy
-        n   V1 V2 Vn          S1 S2 Sn        T1 T2 Tn
+ID  počet  kapacity  počáteční obsahy  koncové obsahy
+    n      V1 V2 Vn  S1 S2 Sn          T1 T2 Tn
